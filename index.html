@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>GTPS25 - Host Info</title>
+  <title>GTPS25 Host Setup</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     .hidden-tab { display: none; }
@@ -32,14 +32,27 @@
   <!-- ANDROID -->
   <div id="android" class="hidden-tab w-full max-w-xl">
     <h2 class="text-xl font-semibold mb-4">Android Options</h2>
-    <a href="https://growsoft.cc/android.txt" download class="bg-yellow-500 block text-center px-4 py-2 mb-2 rounded hover:bg-yellow-600">Download Virtual Host (.txt)</a>
-    <a href="https://growsoft.cc/android.txt" download class="bg-pink-500 block text-center px-4 py-2 rounded hover:bg-pink-600">Download PowerTunnel (.txt)</a>
+    <a href="gtps25vhost.txt" download class="bg-yellow-500 block text-center px-4 py-2 mb-2 rounded hover:bg-yellow-600">Download Virtual Host (.txt)</a>
+    <a href="gtps25ptunnel" download class="bg-pink-500 block text-center px-4 py-2 rounded hover:bg-pink-600">Download PowerTunnel Config</a>
   </div>
 
   <!-- iOS -->
   <div id="ios" class="hidden-tab w-full max-w-xl">
-    <h2 class="text-xl font-semibold mb-2">iOS Host File</h2>
-    <textarea id="iosText" class="w-full bg-gray-800 p-4 rounded text-sm mb-4" rows="3" readonly>https://growsoft.cc/ios.txt</textarea>
+    <h2 class="text-xl font-semibold mb-2">iOS Config</h2>
+    <textarea id="iosText" class="w-full bg-gray-800 p-4 rounded text-sm mb-4" rows="10" readonly>
+[General]
+bypass-system = true
+
+[Rule]
+FINAL,DIRECT
+
+[Host]
+growtopia1.com = 91.134.85.13
+growtopia2.com = 91.134.85.13
+www.growtopia1.com = 91.134.85.13
+www.growtopia2.com = 91.134.85.13
+RvLnd.here = 91.134.85.13
+    </textarea>
     <button onclick="copyText('iosText')" class="bg-purple-500 px-4 py-2 rounded hover:bg-purple-700">Copy</button>
   </div>
 
@@ -53,11 +66,12 @@
     function copyText(id) {
       const textArea = document.getElementById(id);
       textArea.select();
+      textArea.setSelectionRange(0, 99999);
       document.execCommand('copy');
       alert('Copied to clipboard!');
     }
 
-    // Default tab
+    // Show Windows by default
     showTab('windows');
   </script>
 </body>
